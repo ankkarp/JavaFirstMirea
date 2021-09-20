@@ -1,17 +1,18 @@
 package ru.mirea.task5;
 
 public abstract class Dish {
-    protected String material, shape, color;
+    protected String material, color;
+    protected int radius;
 
     public Dish(){
-        this.material = "фарфор";
-        this.shape = "круглая";
-        this.color = "белый";
+        this.material = "porcelain";
+        this.radius = 15;
+        this.color = "white";
     }
 
-    public Dish(String material, String shape, String color, boolean forCooking){
+    public Dish(String material, int radius, String color){
         this.material = material;
-        this.shape = shape;
+        this.radius = radius;
         this.color = color;
     }
 
@@ -23,12 +24,12 @@ public abstract class Dish {
         this.material = material;
     }
 
-    public String getShape() {
-        return shape;
+    public int getRadius() {
+        return radius;
     }
 
-    public void setShape(String shape) {
-        this.shape = shape;
+    public void setRadius(int radius) {
+        this.radius = radius;
     }
 
     public void setColor(String color) {

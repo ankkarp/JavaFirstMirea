@@ -1,22 +1,19 @@
 package ru.mirea.task5;
 
 public class Plate extends Dish{
-    protected String pattern;
     protected int border_width;
 
     public Plate(){
-        this.material = "фарфор";
-        this.shape = "круглая";
-        this.color = "белый";
-        this.pattern = "без узора";
-        this.border_width = 3;
+        this.material = "porcelain";
+        this.radius = 5;
+        this.color = "white";
+        this.border_width = 2;
     }
 
-    public Plate(String material, String shape, String color, String pattern, int border_width, boolean forCooking){
+    public Plate(String material, int radius, String color, int border_width){
         this.material = material;
-        this.shape = shape;
+        this.radius = radius;
         this.color = color;
-        this.pattern = pattern;
         this.border_width = border_width;
     }
 
@@ -28,21 +25,12 @@ public class Plate extends Dish{
         return border_width;
     }
 
-    public void setPattern(String pattern) {
-        this.pattern = pattern;
-    }
-
-    public String getPattern() {
-        return pattern;
-    }
-
     @Override
     public String toString() {
         return "Plate{" +
                 "material='" + material + '\'' +
-                ", shape='" + shape + '\'' +
+                ", radius='" + radius + '\'' +
                 ", color='" + color + '\'' +
-                ", pattern='" + pattern + '\'' +
                 ", border_width=" + border_width +
                 '}';
     }
