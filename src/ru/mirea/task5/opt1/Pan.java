@@ -1,4 +1,4 @@
-package ru.mirea.task5;
+package ru.mirea.task5.opt1;
 
 public class Pan extends Dish{
     protected boolean nonStick; //антипригарное покрытие

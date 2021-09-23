@@ -1,4 +1,4 @@
-package ru.mirea.task5;
+package ru.mirea.task5.opt1;
 
 public class Bowl extends Plate{
     protected int depth;

@@ -1,4 +1,4 @@
-package ru.mirea.task5;
+package ru.mirea.task5.opt1;
 
 public class Plate extends Dish{
     protected int border_width;

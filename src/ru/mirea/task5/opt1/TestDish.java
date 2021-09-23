@@ -1,4 +1,4 @@
-package ru.mirea.task5;
+package ru.mirea.task5.opt1;
 
 public class TestDish {
     public static void main(String[] args) {
