@@ -1,6 +1,6 @@
-package ru.mirea.task7;
+package ru.mirea.task7.shape;
 
-public class Square extends ru.mirea.task7.Rectangle {
+public class Square extends Rectangle {
     public Square(){
         this.width = 1;
         this.length = 1;

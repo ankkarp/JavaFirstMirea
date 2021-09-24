@@ -1,4 +1,4 @@
-package ru.mirea.task7;
+package ru.mirea.task7.shape;
 
 public class TestShape {
     public static void main(String[] args) {
