@@ -1,4 +1,4 @@
-package ru.mirea.task8;
+package ru.mirea.task8.shapes;
 
 public abstract class Shape {
     protected int x, y, r, g, b;

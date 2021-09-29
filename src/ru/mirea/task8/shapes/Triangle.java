@@ -1,4 +1,4 @@
-package ru.mirea.task8;
+package ru.mirea.task8.shapes;
 
 public class Triangle extends Shape{
     protected int x1, y1, x2, y2;

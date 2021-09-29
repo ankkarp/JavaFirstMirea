@@ -1,4 +1,4 @@
-package ru.mirea.task8;
+package ru.mirea.task8.shapes;
 
 public class Rectangle extends Shape {
     protected int width, height;

@@ -1,6 +1,6 @@
-package ru.mirea.task8;
+package ru.mirea.task8.shapes;
 
-public class Circle extends Shape{
+public class Circle extends Shape {
     int radius;
 
     public Circle() {

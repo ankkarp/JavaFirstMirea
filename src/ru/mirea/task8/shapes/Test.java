@@ -1,7 +1,6 @@
-package ru.mirea.task8;
+package ru.mirea.task8.shapes;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 
 public class Test extends JFrame{
@@ -18,4 +17,5 @@ public class Test extends JFrame{
     {
         Test test = new Test();
     }
+
 }

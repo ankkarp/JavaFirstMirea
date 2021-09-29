@@ -1,4 +1,4 @@
-package ru.mirea.task8;
+package ru.mirea.task8.shapes;
 
 import java.awt.*;
 import javax.swing.*;
