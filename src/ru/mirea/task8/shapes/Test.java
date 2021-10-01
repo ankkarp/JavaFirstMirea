@@ -17,5 +17,4 @@ public class Test extends JFrame{
     {
         Test test = new Test();
     }
-
 }
