@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class Data {
     ArrayList<String[]> table_content = new ArrayList<>();
     int n = 0;

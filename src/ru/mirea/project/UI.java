@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UI extends JFrame{
+
     CardLayout cardlayout = new CardLayout();
     JPanel all_pnls = new JPanel(cardlayout);
     JPanel menu_pnl = new JPanel(new GridBagLayout());
