@@ -3,10 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class UI extends JFrame{
 
@@ -26,10 +23,8 @@ public class UI extends JFrame{
     JButton menu2_btn = new JButton("MENU");
     JButton menu3_btn = new JButton("MENU");
     JButton[] btns = {start_btn, records_btn, settings_btn, menu_btn, menu2_btn, menu3_btn, begin_game_btn};
-    JTextField textField = new JTextField();
 //task17
     enum LEVEL{EASY, NORMAL, HARD};
-//
     JComboBox level_choice = new JComboBox(LEVEL.values());
     String[] table_headers = {"RANK", "SCORE", "DATE"};
     JTable records_tbl;
@@ -45,7 +40,6 @@ public class UI extends JFrame{
 
         }
     };
-//
 
     public UI() {
         setVisible(true);
@@ -77,7 +71,6 @@ public class UI extends JFrame{
             }
         });
         Data data = new Data();
-        ArrayList<String[]> table_content = new ArrayList<>();
         records_tbl = new JTable(data.getRecordsContent(), table_headers);
         records_tbl.getColumnModel().getColumn(2).setPreferredWidth(100);
         records_tbl.setEnabled(false);
