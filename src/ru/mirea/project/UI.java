@@ -34,6 +34,10 @@ public class UI extends JFrame{
         public void actionPerformed(ActionEvent evt) {
             try{
                 cardlayout.show(all_pnls, ((JButton) evt.getSource()).getText());
+//task
+                if ("GAME".equals(((JButton) evt.getSource()).getText())){
+                    new Game();
+                }
             }catch(ClassCastException ignored){
                 ;
             }
