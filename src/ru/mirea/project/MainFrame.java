@@ -3,26 +3,25 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
-public class UI extends JFrame{
+public class MainFrame extends JFrame{
 
     CardLayout cardlayout = new CardLayout();
     JPanel all_pnls = new JPanel(cardlayout);
     JPanel menu_pnl = new JPanel(new GridBagLayout());
     JPanel game_pnl = new JPanel(new GridBagLayout());
-    JPanel start_pnl = new JPanel(new GridBagLayout());
+    JPanel select_pnl = new JPanel(new GridBagLayout());
     JPanel settings_pnl = new JPanel(new FlowLayout());
     JPanel records_pnl = new JPanel(new FlowLayout());
-    JButton start_btn = new JButton("PLAY");
+    JButton select_btn = new JButton("PLAY");
     JButton records_btn = new JButton("RECORDS");
     JButton settings_btn = new JButton("SETTINGS");
     JButton exit_btn = new JButton("EXIT");
-    JButton begin_game_btn = new JButton("START");
+    JButton start_btn = new JButton("START");
     JButton menu_btn = new JButton("MENU");
     JButton menu2_btn = new JButton("MENU");
     JButton menu3_btn = new JButton("MENU");
-    JButton[] btns = {start_btn, records_btn, settings_btn, menu_btn, menu2_btn, menu3_btn, begin_game_btn};
+    JButton[] btns = {start_btn, records_btn, settings_btn, menu_btn, menu2_btn, menu3_btn, select_btn};
 //task17
     enum LEVEL{EASY, NORMAL, HARD};
     JComboBox level_choice = new JComboBox(LEVEL.values());
@@ -35,8 +34,9 @@ public class UI extends JFrame{
             try{
                 cardlayout.show(all_pnls, ((JButton) evt.getSource()).getText());
 //task
-                if ("GAME".equals(((JButton) evt.getSource()).getText())){
-                    new Game();
+                if ("START".equals(((JButton) evt.getSource()).getText())){
+                    Game game = new Game();
+                    game_pnl = game;
                 }
             }catch(ClassCastException ignored){
                 ;
@@ -45,21 +45,22 @@ public class UI extends JFrame{
         }
     };
 
-    public UI() {
+    public MainFrame() {
         setVisible(true);
         setLayout(new FlowLayout());
         setSize(512, 512);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        menu_pnl.add(start_btn);
+        Game game = new Game();
+        menu_pnl.add(select_btn);
         menu_pnl.add(records_btn);
         menu_pnl.add(settings_btn);
         menu_pnl.add(exit_btn);
-        start_pnl.add(menu_btn);
-        start_pnl.add(level_choice);
-        start_pnl.add(begin_game_btn);
+        select_pnl.add(menu_btn);
+        select_pnl.add(level_choice);
+        select_pnl.add(start_btn);
         settings_pnl.add(menu2_btn);
         all_pnls.add(menu_pnl, "MENU");
-        all_pnls.add(start_pnl, "PLAY");
+        all_pnls.add(select_pnl, "PLAY");
         all_pnls.add(records_pnl, "RECORDS");
         all_pnls.add(settings_pnl, "SETTINGS");
         all_pnls.add(game_pnl, "START");
@@ -83,6 +84,6 @@ public class UI extends JFrame{
     }
 
     public static void main(String[] args) {
-        new UI();
+        new MainFrame();
     }
 }
