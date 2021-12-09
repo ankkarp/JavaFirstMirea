@@ -26,6 +26,7 @@ public class Data {
                 n++;
             }
 //task20
+//task
             SimpleDateFormat date_format = new SimpleDateFormat("dd/MM/yyyy hh:mm");
             myReader.close();
             date.setTime(parseInt(table_content.get(table_content.size() - 1)[2]));
