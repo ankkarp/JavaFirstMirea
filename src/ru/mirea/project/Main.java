@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 
 public class Main extends JFrame{
 
@@ -23,13 +24,15 @@ public class Main extends JFrame{
     JButton menu2_btn = new JButton("MENU");
     JButton menu3_btn = new JButton("MENU");
     JLabel name_label = new JLabel("Name: ");
-    JTextArea name_input = new JTextArea("Player1");
+    String cur_player = "Player1";
+    JTextArea name_input = new JTextArea(cur_player);
     Game game = new Game();
     JButton[] btns = {start_btn, records_btn, settings_btn, menu_btn, menu2_btn, menu3_btn, select_btn};
 //task17
     enum LEVEL{EASY, NORMAL, HARD};
     JComboBox level_choice = new JComboBox(LEVEL.values());
-    String[] table_headers = {"RANK", "SCORE", "DATE"};
+    HashMap<String, Integer> players = new HashMap<>();
+    String[] table_headers = {"RANK","SCORE", "DATE"};
     JTable records_tbl;
     JLabel rule = new JLabel("Name should only contain alphanumeric characters or _");
 
