@@ -11,22 +11,20 @@ public class Game extends JPanel implements KeyListener{
     boolean isRunning = false;
 
     Game(){
-        setFocusable(true);
-        requestFocusInWindow();
+        setLayout(new GridBagLayout());
     }
 
     public void begin(){
         isRunning = true;
         x = 150;
         y = 150;
+        hp = 3;
     }
 
     public void paintComponent(Graphics g){
         System.out.println(x + ", " + y);
         super.paintComponent(g);
-        hp = 3;
         g.drawImage(player ,x, y,this);
-        setBackground(new Color(100, 100, 100));
     }
 
     public static void main(String[] args) {
