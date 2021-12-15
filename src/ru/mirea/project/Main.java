@@ -5,21 +5,24 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
+import java.util.Objects;
 
 import static javax.swing.UIManager.put;
 
 public class Main extends JFrame{
-    JPanel pnl = new Game();
+    JPanel ui = new JPanel(new GridBagLayout());
+    CardLayout cardLayout = new CardLayout();
+    JPanel cards = new JPanel(cardLayout);
+    JButton menu_btn = new JButton("MENU");
+    Game game = new Game(this, cardLayout, cards, ui, menu_btn);
     JButton select_btn = new JButton("PLAY");
     JButton records_btn = new JButton("RECORDS");
     JButton settings_btn = new JButton("SETTINGS");
     JButton exit_btn = new JButton("EXIT");
     JButton start_btn = new JButton("START");
-    JButton menu_btn = new JButton("MENU");
     JLabel name_label = new JLabel("Name: ");
     String cur_player = "Player1";
     JTextArea name_input = new JTextArea(cur_player);
-    Game game = new Game();
     Data data = new Data();
 //task17
     enum LEVEL{EASY, NORMAL, HARD};
@@ -36,44 +39,42 @@ public class Main extends JFrame{
             if (!name_input.getText().matches("^[0-9a-zA-Z_]+$")){ //task24
                 throw new WrongName("Wrong Name");
             }
-            pnl.removeAll();
-            switch(active){
-                case"MENU":
-                    pnl.add(select_btn);
-                    pnl.add(records_btn);
-                    pnl.add(settings_btn);
-                    pnl.add(exit_btn);
-                    break;
-                case "PLAY":
-                    pnl.add(menu_btn);
-                    pnl.add(level_choice);
-                    pnl.add(start_btn);
-                    break;
-                case "RECORDS":
+            ui.removeAll();
+            switch (active) {
+                case "MENU" -> {
+                    ui.add(select_btn);
+                    ui.add(records_btn);
+                    ui.add(settings_btn);
+                    ui.add(exit_btn);
+                }
+                case "PLAY" -> {
+                    ui.add(menu_btn);
+                    ui.add(level_choice);
+                    ui.add(start_btn);
+                }
+                case "RECORDS" -> {
                     records_tbl = new JTable(data.getRecordsContent(), table_headers);
                     records_tbl.getColumnModel().getColumn(2).setPreferredWidth(100);
                     records_tbl.setEnabled(false);
-                    pnl.add(menu_btn);
-                    pnl.add(records_tbl);
-                    break;
-                case "START":
-                    game.begin();
-                    break;
-                case "SETTINGS":
-                    pnl.add(menu_btn);
-                    pnl.add(name_label);
-                    pnl.add(name_input);
-                    pnl.add(rule);
-                    break;
-                case "EXIT":
-                    System.exit(0);
-                    break;
+                    ui.add(menu_btn);
+                    ui.add(records_tbl);
+                }
+                case "START" -> {
+                    cardLayout.show(cards, "GAME");
+                    ((Game) game).begin((LEVEL) (level_choice.getSelectedItem()), name_input.getText());
+                }
+                case "SETTINGS" -> {
+                    ui.add(menu_btn);
+                    ui.add(name_label);
+                    ui.add(name_input);
+                    ui.add(rule);
+                }
+                case "EXIT" -> System.exit(0);
             }
-            pnl.revalidate();
-            pnl.repaint();
+            ui.revalidate();
+            ui.repaint();
         }catch(WrongName wrongName){
             rule.setForeground(Color.RED);
-            System.out.println("Error");
         }
     }
 
@@ -91,12 +92,17 @@ public class Main extends JFrame{
     public Main() throws WrongName {
         setVisible(true);
         setLayout(new FlowLayout());
-        setSize(1000,1000);//параметры окошка
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);//выход
-        setResizable(false);//это запрет на изменение размера окна, на всякий случай
-        setLocationRelativeTo(null);//для рамещения по центру, чтобы окно не ездило
+        setSize(1000,1000);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        setLocationRelativeTo(null);
         setVisible(true);
-        add(pnl);
+        ui.setBackground(new Color(45/2, 40/2, 60/2));
+        game.setBackground(new Color(45/2, 40/2, 60/2));
+        cards.add(ui, "UI");
+        cards.add(game, "GAME");
+        add(cards);
+        cardLayout.show(cards, "UI");
         loadPanel("MENU");
         for (JButton btn: buttons){
             btn.addActionListener(navListener);
